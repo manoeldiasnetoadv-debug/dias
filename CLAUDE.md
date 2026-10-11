@@ -30,6 +30,10 @@ Ordem padrão: **(auditoria probatória, quando há documentos) → (jurisprudê
 - **`claude --agent advogado-senior-coordenador`**: abre a sessão já com o coordenador como agente principal (Modo Regência), acionando os especialistas diretamente.
 - Cada especialista também pode ser chamado isoladamente ("use o arquiteto-dispositio para reordenar estes tópicos"); mesmo assim ele planeja antes de executar.
 
+## Diálogo entre os agentes
+
+Os agentes conversam entre si enquanto trabalham, pela ferramenta `SendMessage`, conforme `.claude/banca/protocolo-dialogo.md`. Cada um é acionado com um nome fixo (`coordenador`, `auditor`, `pesquisador`, `refinador`, `validador`, `argumentador`, `estrategista`, `arquiteto`, `revisor`; a sessão principal é `main`) e troca mensagens de cinco tipos: CONSULTA, ALERTA, CONTESTAÇÃO, RESPOSTA e ESCALADA. Agente que já concluiu é retomado quando recebe mensagem. Cada agente decide só sobre a sua camada e nunca edita o arquivo de outro; divergência não resolvida em duas trocas vai ao coordenador. Toda mensagem fica registrada em `canal-da-banca.md` na pasta do caso. Antes da auditoria final, o coordenador abre uma rodada de contraditório sobre o texto quase final.
+
 ## Pasta de cada trabalho
 
 `trabalhos/AAAA-MM-DD-<slug>/`
@@ -37,6 +41,7 @@ Ordem padrão: **(auditoria probatória, quando há documentos) → (jurisprudê
 | Arquivo | Autor |
 |---|---|
 | `00-briefing.md` | coordenador (material do advogado, sem edição) |
+| `canal-da-banca.md` | todos (registro das mensagens entre agentes, só por acréscimo) |
 | `01-plano-mestre.md` | coordenador (diagnóstico, rota, encargos, critérios de aceite, cronograma, arbitragens) |
 | `jurisprudencia/01_pesquisa_bruta.md` | pesquisador-jurisprudencial (plano de pesquisa + inventário) |
 | `jurisprudencia/02_refinamento_critico.md` | refinador-critico-jurisprudencial (plano + matriz de aderência) |

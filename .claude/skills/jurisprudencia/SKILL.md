@@ -7,6 +7,8 @@ description: "Aciona o NÚCLEO DE JURISPRUDÊNCIA da banca (pesquisador-jurispru
 
 Você (a sessão principal) conduz o núcleo em nome do `advogado-senior-coordenador`. As três etapas são sequenciais: cada uma lê a saída da anterior, então aguarde a conclusão de cada subagente antes de acionar o próximo.
 
+Acione cada um com o nome fixo (`name`: `pesquisador`, `refinador`, `validador`) para que conversem entre si por `SendMessage`, conforme `.claude/banca/protocolo-dialogo.md`: o refinador consulta o pesquisador sobre a trilha de fonte, o validador resolve divergências consultando os dois. Crie `canal-da-banca.md` na pasta do caso, se não existir. Dúvida posterior com um agente que já concluiu vai por mensagem, sem novo acionamento.
+
 ## Fluxo
 
 ### 1. Recepção e pasta

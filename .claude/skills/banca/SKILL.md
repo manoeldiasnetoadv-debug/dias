@@ -5,7 +5,7 @@ description: "Aciona a banca de aprimoramento de textos jurídicos do escritóri
 
 # Banca de aprimoramento de textos jurídicos
 
-Você (a sessão principal) conduz a banca em nome do **advogado sênior coordenador**. Os subagentes não acionam uns aos outros: é você quem os chama, um de cada vez, na ordem do Plano Mestre, e quem leva cada relatório ao coordenador quando há dúvida ou devolução.
+Você (a sessão principal, endereço `main`) conduz a banca em nome do **advogado sênior coordenador**. É você quem aciona cada agente, na ordem do Plano Mestre. **Os agentes conversam entre si enquanto trabalham**: cada um é acionado com um nome fixo e troca CONSULTAS, ALERTAS, CONTESTAÇÕES e RESPOSTAS com os colegas pela ferramenta `SendMessage`, conforme `.claude/banca/protocolo-dialogo.md`. Tudo fica registrado em `canal-da-banca.md` na pasta do caso.
 
 Agentes (em `.claude/agents/`):
 
@@ -17,9 +17,29 @@ Agentes (em `.claude/agents/`):
 - `auditor-probatorio`: prova documental, Fase I (auditoria documental) e Fase II (subsunção probatória com recortes), com `ferramentas/auditdoc.py`, `recorte.py` e `confronto.py`.
 - Núcleo de jurisprudência: `pesquisador-jurisprudencial` → `refinador-critico-jurisprudencial` → `validador-final-jurisprudencial` (fluxo detalhado na skill `jurisprudencia`).
 
+## Nomes fixos (endereços para o diálogo)
+
+Acione **sempre** cada agente pela ferramenta Agent com o parâmetro `name` abaixo. Sem nome, o agente não pode ser encontrado pelos colegas.
+
+| Agente (`subagent_type`) | `name` |
+|---|---|
+| advogado-senior-coordenador | `coordenador` |
+| auditor-probatorio | `auditor` |
+| pesquisador-jurisprudencial | `pesquisador` |
+| refinador-critico-jurisprudencial | `refinador` |
+| validador-final-jurisprudencial | `validador` |
+| argumentador-juridico | `argumentador` |
+| estrategista-argumentacao | `estrategista` |
+| arquiteto-dispositio | `arquiteto` |
+| revisor-redacao-impecavel | `revisor` |
+
+Cada nome é acionado **uma única vez por caso**. Para nova tarefa, dúvida, retrabalho ou contraditório com um agente que já concluiu, envie-lhe mensagem por `SendMessage` (`to` = o nome): ele é retomado com todo o contexto do que já fez. O mesmo vale para o coordenador, que acompanha o caso inteiro com memória.
+
+Mensagens que os agentes enviam a `main` chegam a você: trate-as (ALERTA de prazo ou ético vai ao usuário na hora) e responda quando for o caso.
+
 ## Fluxo obrigatório
 
-Cada passo depende do anterior: aguarde a conclusão de cada subagente antes do próximo (não os deixe correndo em paralelo, salvo etapas que o Plano Mestre declare independentes).
+Etapas dependentes rodam em sequência: aguarde a conclusão de cada agente antes do próximo. Etapas que o Plano Mestre declare independentes rodam em paralelo (tipicamente a Fase I do `auditor` e o núcleo de jurisprudência), e os agentes paralelos conversam enquanto trabalham. Entre uma etapa e outra, leia o `canal-da-banca.md`: mensagem com `Status: aberta` cujo destinatário não a recebeu é encaminhada por você; ESCALADA vai ao `coordenador`.
 
 ### 1. Recepção
 
@@ -27,7 +47,7 @@ Reúna o material do usuário (texto colado, arquivo no repositório, anexos). S
 
 ### 2. Planejamento (antes de qualquer execução)
 
-Acione `advogado-senior-coordenador` em **Modo Planejamento**, entregando o material integral e pedindo que crie a pasta `trabalhos/AAAA-MM-DD-<slug>/`, grave `00-briefing.md` e `01-plano-mestre.md` (Fases 0 e 1). Ao receber o retorno:
+Acione `advogado-senior-coordenador` com `name: coordenador` em **Modo Planejamento**, entregando o material integral e pedindo que crie a pasta `trabalhos/AAAA-MM-DD-<slug>/`, grave `00-briefing.md`, `01-plano-mestre.md` e o `canal-da-banca.md` (Fases 0 e 1). Ao receber o retorno:
 
 - confira que `01-plano-mestre.md` existe e contém rota, encargos com critérios de aceite e cronograma;
 - informe ao usuário, em poucas linhas, o diagnóstico, a rota escolhida e o provável Elo Frágil;
@@ -43,21 +63,22 @@ Se o Plano Mestre listar questões para o núcleo, execute o fluxo da skill `jur
 
 ### 4. Execução pelos especialistas
 
-Para cada etapa do cronograma do Plano Mestre, acione o especialista indicado usando o modelo "ENCARGO DA BANCA" do plano (pasta, arquivos a ler, objetivo, modo, decisões vinculantes, critérios de aceite, arquivo de saída). Reforce sempre: **registrar o Plano de trabalho no topo do arquivo de saída antes de executar** e encerrar com o RELATÓRIO padronizado.
+Para cada etapa do cronograma do Plano Mestre, acione o especialista indicado, com o seu `name` fixo, usando o modelo "ENCARGO DA BANCA" do plano (pasta, arquivos a ler, objetivo, modo, decisões vinculantes, critérios de aceite, arquivo de saída). Reforce sempre: **registrar o Plano de trabalho no topo do arquivo de saída antes de executar** e encerrar com o RELATÓRIO padronizado.
 
 Depois de cada relatório:
 
 - **CONCLUÍDO**: siga para a próxima etapa.
-- **CONCLUÍDO COM RESSALVAS** ou **Devolução** entre camadas: acione o coordenador (Modo Auditoria Final, escopo restrito à questão) para arbitrar; aplique a decisão (retrabalho do especialista indicado, no máximo dois ciclos).
+- **CONCLUÍDO COM RESSALVAS**, **Devolução** entre camadas ou ESCALADA no canal: envie a questão ao `coordenador` por mensagem (Modo Arbitragem); ele decide e comunica aos agentes envolvidos, que corrigem os próprios arquivos (no máximo dois ciclos por agente).
+- Linha **Diálogos** do relatório com pendência sem resposta: encaminhe a mensagem ao destinatário por `SendMessage` antes de seguir.
 - **BLOQUEADO**: leve ao usuário as perguntas do relatório (no máximo duas) e suspenda.
 
-### 5. Auditoria final
+### 5. Rodada de contraditório e auditoria final
 
-Acione `advogado-senior-coordenador` em **Modo Auditoria Final** sobre a pasta do trabalho. Se **DEVOLVIDO**, encaminhe o retrabalho ao especialista indicado e repita a auditoria (até dois ciclos por especialista; depois disso o coordenador corrige diretamente). Se **APROVADO**, o coordenador grava `peca-final.md` e `05-parecer-final.md`.
+Envie ao `coordenador` (por mensagem) o pedido de **rodada de contraditório**: ele pede a cada especialista que atuou até três CONTESTAÇÕES sobre o texto quase final, os destinatários respondem e corrigem os próprios arquivos, e ele arbitra o que restar. Em seguida, peça ao `coordenador` o **Modo Auditoria Final** sobre a pasta do trabalho. Se **DEVOLVIDO**, encaminhe o retrabalho ao especialista indicado e repita a auditoria (até dois ciclos por especialista; depois disso o coordenador corrige diretamente). Se **APROVADO**, o coordenador grava `peca-final.md` e `05-parecer-final.md`.
 
 ### 6. Entrega ao usuário
 
-Responda com: síntese executiva; caminho de `peca-final.md` e `05-parecer-final.md`; Argumento Foco e força global; Elo Frágil; pendências que exigem decisão do advogado (marcadores com localização); documentos a juntar. Não cole a peça inteira, salvo pedido.
+Responda com: síntese executiva; as contestações entre agentes que mudaram a peça (uma linha cada); caminho de `peca-final.md` e `05-parecer-final.md`; Argumento Foco e força global; Elo Frágil; pendências que exigem decisão do advogado (marcadores com localização); documentos a juntar. Não cole a peça inteira, salvo pedido.
 
 ## Atalhos de rota
 
