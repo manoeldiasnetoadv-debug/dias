@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+
+# Casos reais contêm dados de clientes: não versionar
+trabalhos/*
+!trabalhos/.gitkeep
