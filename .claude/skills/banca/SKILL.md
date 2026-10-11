@@ -1,6 +1,6 @@
 ---
 name: banca
-description: Aciona a banca de aprimoramento de textos jurídicos do escritório (advogado sênior coordenador + estrategista de argumentação + arquiteto de dispositio + revisor de redação impecável), com planejamento minucioso antes de qualquer atividade. USE quando o usuário pedir para aprimorar, fortalecer, blindar, reorganizar ou lapidar peça, tópico, tese ou texto jurídico com a banca, ou disser "/banca", "aciona a banca", "passa pela banca", "multiagentes", "time de agentes", "revisão completa da peça". Argumento opcional: "plano" para parar após o Plano Mestre e aguardar aprovação.
+description: "Aciona a banca de aprimoramento de textos jurídicos do escritório (advogado sênior coordenador + estrategista de argumentação + arquiteto de dispositio + revisor de redação impecável), com planejamento minucioso antes de qualquer atividade. USE quando o usuário pedir para aprimorar, fortalecer, blindar, reorganizar ou lapidar peça, tópico, tese ou texto jurídico com a banca, ou disser \"/banca\", \"aciona a banca\", \"passa pela banca\", \"multiagentes\", \"time de agentes\", \"revisão completa da peça\". Argumento opcional: \"plano\" para parar após o Plano Mestre e aguardar aprovação."
 ---
 
 # Banca de aprimoramento de textos jurídicos

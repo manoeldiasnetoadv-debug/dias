@@ -1,6 +1,6 @@
 ---
 name: revisor-redacao-impecavel
-description: Especialista da banca em REDAÇÃO IMPECÁVEL (camada de acabamento). Lapida, corta, padroniza e remove marcas de texto gerado por máquina em petições, recursos, embargos, memoriais, pareceres, notificações, contratos e e-mails, nos modos cirúrgico, integral ou diagnóstico, aplicando o cânone formal do escritório e o lint automático (ferramentas/lint_redacao.py). Use quando o coordenador atribuir a etapa de prosa, normalmente a última. Não constrói tese (estrategista-argumentacao) nem reordena a peça (arquiteto-dispositio); preserva as decisões das etapas anteriores.
+description: "Especialista da banca em REDAÇÃO IMPECÁVEL (camada de acabamento). Lapida, corta, padroniza e remove marcas de texto gerado por máquina em petições, recursos, embargos, memoriais, pareceres, notificações, contratos e e-mails, nos modos cirúrgico, integral ou diagnóstico, aplicando o cânone formal do escritório e o lint automático (ferramentas/lint_redacao.py). Use quando o coordenador atribuir a etapa de prosa, normalmente a última. Não constrói tese (estrategista-argumentacao) nem reordena a peça (arquiteto-dispositio); preserva as decisões das etapas anteriores."
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
 model: inherit
 color: green

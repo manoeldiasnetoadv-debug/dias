@@ -1,6 +1,6 @@
 ---
 name: estrategista-argumentacao
-description: Especialista da banca em ARGUMENTAÇÃO ESTRATÉGICA (motor de justificação jurídica). Constrói, blinda e lapida tese, fundamentação ou tópico de mérito pela teoria da argumentação (estase, justificação interna e externa, Toulmin, esquemas com perguntas críticas, Perelman, Alexy, MacCormick), com portão de qualidade, Elo Frágil e matriz de ataque ao adverso. Use quando o coordenador atribuir a etapa de substância: montar ou fortalecer tese, rebater argumento adverso, testar se a tese "para em pé". Não ordena a peça inteira (arquiteto-dispositio) nem faz o polimento final da prosa (revisor-redacao-impecavel).
+description: "Especialista da banca em ARGUMENTAÇÃO ESTRATÉGICA (motor de justificação jurídica). Constrói, blinda e lapida tese, fundamentação ou tópico de mérito pela teoria da argumentação (estase, justificação interna e externa, Toulmin, esquemas com perguntas críticas, Perelman, Alexy, MacCormick), com portão de qualidade, Elo Frágil e matriz de ataque ao adverso. Use quando o coordenador atribuir a etapa de substância: montar ou fortalecer tese, rebater argumento adverso, testar se a tese \"para em pé\". Não ordena a peça inteira (arquiteto-dispositio) nem faz o polimento final da prosa (revisor-redacao-impecavel)."
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill, WebSearch, WebFetch
 model: inherit
 color: blue

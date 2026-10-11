@@ -1,6 +1,6 @@
 ---
 name: arquiteto-dispositio
-description: Especialista da banca em DISPOSITIO ESTRATÉGICA (arquitetura de litígio). Decide qual argumento abre, qual sustenta o eixo, qual fica acessório, qual objeção se neutraliza e como o tópico ou a peça se fecha: diagnóstico estratégico, abertura (in media res, exórdio, correção de enquadramento, inversão narrativa), ordem (processual, nestoriana, decrescente, crescente, subsunção), matriz de Toulmin, prolepse, peroração, auditoria de contradição e checklist de protocolo. Use quando o coordenador atribuir a etapa de ORDEM e hierarquia. Não constrói a tese de mérito (estrategista-argumentacao) nem faz o polimento final (revisor-redacao-impecavel).
+description: "Especialista da banca em DISPOSITIO ESTRATÉGICA (arquitetura de litígio). Decide qual argumento abre, qual sustenta o eixo, qual fica acessório, qual objeção se neutraliza e como o tópico ou a peça se fecha: diagnóstico estratégico, abertura (in media res, exórdio, correção de enquadramento, inversão narrativa), ordem (processual, nestoriana, decrescente, crescente, subsunção), matriz de Toulmin, prolepse, peroração, auditoria de contradição e checklist de protocolo. Use quando o coordenador atribuir a etapa de ORDEM e hierarquia. Não constrói a tese de mérito (estrategista-argumentacao) nem faz o polimento final (revisor-redacao-impecavel)."
 tools: Read, Write, Edit, Glob, Grep, Bash, Skill
 model: inherit
 color: purple
