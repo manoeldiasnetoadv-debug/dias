@@ -1,0 +1,5 @@
+# Dependências Python das ferramentas da banca
+pypdf>=4.0        # auditdoc.py: metadados e revisões de PDF
+Pillow>=10.0      # auditdoc.py (EXIF) e confronto.py
+PyMuPDF>=1.24     # recorte.py: rasterização e recorte de PDF
+pytesseract>=0.3  # recorte.py: OCR (exige o programa Tesseract instalado no sistema)

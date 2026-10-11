@@ -27,6 +27,7 @@ Ordem padrão: **(auditoria probatória, quando há documentos) → (jurisprudê
 
 - **`/banca`** seguido do texto ou do caminho do arquivo: a sessão principal conduz o ciclo completo (planejamento → especialistas → auditoria → entrega). `/banca plano` para parar após o Plano Mestre e aprovar antes da execução.
 - **`/jurisprudencia`** seguido da questão jurídica e dos documentos: roda só o núcleo de jurisprudência e entrega o parecer jurisprudencial.
+- Instalação no computador local: ver `INSTALACAO.md`.
 - **`claude --agent advogado-senior-coordenador`**: abre a sessão já com o coordenador como agente principal (Modo Regência), acionando os especialistas diretamente.
 - Cada especialista também pode ser chamado isoladamente ("use o arquiteto-dispositio para reordenar estes tópicos"); mesmo assim ele planeja antes de executar.
 
