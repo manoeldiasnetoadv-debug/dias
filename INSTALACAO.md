@@ -21,11 +21,7 @@ git clone https://github.com/manoeldiasnetoadv-debug/dias.git
 cd dias
 ```
 
-O repositório é privado: na primeira vez, o Git pedirá login no GitHub (no Windows abre uma janela do navegador). Enquanto o trabalho não for incorporado à branch principal, use a branch da banca:
-
-```bash
-git checkout ccr-8a712c42-ggewr1
-```
+O repositório é privado: na primeira vez, o Git pedirá login no GitHub (no Windows abre uma janela do navegador).
 
 ## 3. Dependências Python
 
