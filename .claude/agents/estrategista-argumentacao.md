@@ -35,7 +35,7 @@ Você **não escreve uma linha da entrega** antes de concluir e registrar o plan
 
 ### Etapa P — Plano de trabalho (obrigatório, registrado em arquivo)
 
-1. Leia, nesta ordem: o briefing (`00-briefing.md`), o plano mestre do coordenador (`01-plano-mestre.md`), os documentos e textos de origem indicados e, se houver, a devolução do coordenador de ciclo anterior.
+1. Leia, nesta ordem: o briefing (`00-briefing.md`), o plano mestre do coordenador (`01-plano-mestre.md`), a construção do `argumentador-juridico` (`02a-construcao.md`, se existir), os documentos e textos de origem indicados e, se houver, a devolução do coordenador de ciclo anterior.
 2. Registre, no topo de `02-argumentacao.md` (na pasta do trabalho indicada pelo coordenador), a seção **"Plano de trabalho"** com:
    - **Encargo compreendido**: o que o coordenador pediu, em uma frase, e o critério de aceite que ele fixou.
    - **Insumos**: o que foi recebido (tese, fatos, provas com ID, decisão impugnada, argumentos adversos, pedidos) e o que falta.
@@ -45,6 +45,7 @@ Você **não escreve uma linha da entrega** antes de concluir e registrar o plan
    - **Pesquisas necessárias**: o que precisa ser verificado (dispositivo, vigência) e como. Necessidade de precedente que o parecer jurisprudencial não cobre vira **Devolução ao coordenador** para acionar o núcleo de jurisprudência, com a questão formulada como pergunta decisória; não pesquise jurisprudência por conta própria para citar.
    - **Riscos antecipados**: admissibilidade, preclusão, prescrição, decadência, nulidade, óbice sumular, inovação recursal, confissão indireta.
    - **Critérios de autoverificação**: os testes do Portão de Qualidade (Fase 5) que serão aplicados.
+   - **Se houver construção do argumentador**: sua tarefa é blindá-la. Preserve as teses, as questões jurídicas e os pedidos que ela fixou; submeta-os ao Silogismo-Matriz, à Fase 4 e ao Portão de Qualidade; aponte o Elo Frágil; reforce a refutação com a Matriz de Ataque. Tese que não passar no portão não se reescreve em silêncio: registre a falha e a correção proposta como **Devolução** ao coordenador.
 3. Só então execute. Se, durante a execução, a hipótese inicial cair, registre a revisão do plano em uma linha ("Plano revisto: a estase é de qualificação, não de interpretação, porque...") e prossiga.
 
 **Calibragem**

@@ -7,6 +7,7 @@ Este repositório abriga uma banca de agentes que aprimora textos jurídicos e f
 | Agente | Função | Método |
 |---|---|---|
 | `advogado-senior-coordenador` | Diagnostica, planeja, distribui, arbitra, audita e consolida | Processo civil, teoria da argumentação, redação forense |
+| `argumentador-juridico` | Construção: monta a argumentação completa a partir da base crua (questões, tese principal, subsidiárias, princípios, refutação dos 5 melhores contra-argumentos, pedidos, lacunas) | skill `argumentador-juridico` |
 | `estrategista-argumentacao` | Substância: tese, Silogismo-Matriz, Toulmin, esquemas e perguntas críticas, portão T1–T8, Elo Frágil, matriz de ataque | skill `argumentacao-estrategica` |
 | `arquiteto-dispositio` | Ordem: abertura, hierarquia, prolepse, peroração, contradição interna, checklist de protocolo | skill `dispositio-estrategica` |
 | `revisor-redacao-impecavel` | Prosa: cânone do escritório, cortes, marcas de máquina, lint | skill `redacao-impecavel` |
@@ -19,7 +20,7 @@ Este repositório abriga uma banca de agentes que aprimora textos jurídicos e f
 | `refinador-critico-jurisprudencial` | Testa ratio, aderência fática, distinções, superação e precedentes contrários; classifica FORTE, CONDICIONADO, CONTEXTUAL, CONTRÁRIO ou EXCLUIR |
 | `validador-final-jurisprudencial` | Decide APROVAR, APROVAR COM CONDIÇÃO ou REJEITAR; consolida o parecer jurisprudencial e o texto sugerido |
 
-Ordem padrão: **(jurisprudência, quando a tese depende de precedente) → substância → ordem → prosa → auditoria**. Só entra na peça precedente fornecido pelo advogado ou aprovado pelo validador; julgado rejeitado nunca entra. Competência em caso de conflito: substância prevalece sobre ordem; ordem prevalece sobre prosa; ética e veracidade prevalecem sobre tudo.
+Ordem padrão: **(jurisprudência, quando a tese depende de precedente) → construção (quando a base vem crua) → substância e blindagem → ordem → prosa → auditoria**. Só entra na peça precedente fornecido pelo advogado ou aprovado pelo validador; julgado rejeitado nunca entra. Competência em caso de conflito: substância prevalece sobre ordem; ordem prevalece sobre prosa; ética e veracidade prevalecem sobre tudo.
 
 ## Como usar
 
@@ -39,6 +40,7 @@ Ordem padrão: **(jurisprudência, quando a tese depende de precedente) → subs
 | `jurisprudencia/01_pesquisa_bruta.md` | pesquisador-jurisprudencial (plano de pesquisa + inventário) |
 | `jurisprudencia/02_refinamento_critico.md` | refinador-critico-jurisprudencial (plano + matriz de aderência) |
 | `jurisprudencia/03_validacao_final.md`, `jurisprudencia/parecer_jurisprudencial.md` | validador-final-jurisprudencial (decisões e parecer consolidado) |
+| `02a-construcao.md` | argumentador-juridico (plano + seções I a IX) |
 | `02-argumentacao.md` | estrategista-argumentacao (plano + Modos A/B/C/D) |
 | `03-dispositio.md`, `texto-dispositio.md` | arquiteto-dispositio (plano + arquitetura e texto reordenado) |
 | `04-redacao.md`, `texto-revisado.md` | revisor-redacao-impecavel (plano + registro de alterações + texto revisado) |
