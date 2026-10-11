@@ -1,6 +1,6 @@
 ---
 name: banca
-description: "Aciona a banca de aprimoramento de textos jurídicos do escritório (advogado sênior coordenador + argumentador jurídico + estrategista de argumentação + arquiteto de dispositio + revisor de redação impecável + núcleo de jurisprudência), com planejamento minucioso antes de qualquer atividade. USE quando o usuário pedir para aprimorar, fortalecer, blindar, reorganizar ou lapidar peça, tópico, tese ou texto jurídico com a banca, ou disser \"/banca\", \"aciona a banca\", \"passa pela banca\", \"multiagentes\", \"time de agentes\", \"revisão completa da peça\". Argumento opcional: \"plano\" para parar após o Plano Mestre e aguardar aprovação."
+description: "Aciona a banca de aprimoramento de textos jurídicos do escritório (advogado sênior coordenador + argumentador jurídico + estrategista de argumentação + arquiteto de dispositio + revisor de redação impecável + auditor probatório + núcleo de jurisprudência), com planejamento minucioso antes de qualquer atividade. USE quando o usuário pedir para aprimorar, fortalecer, blindar, reorganizar ou lapidar peça, tópico, tese ou texto jurídico com a banca, ou disser \"/banca\", \"aciona a banca\", \"passa pela banca\", \"multiagentes\", \"time de agentes\", \"revisão completa da peça\". Argumento opcional: \"plano\" para parar após o Plano Mestre e aguardar aprovação."
 ---
 
 # Banca de aprimoramento de textos jurídicos
@@ -14,6 +14,7 @@ Agentes (em `.claude/agents/`):
 - `estrategista-argumentacao`: substância e blindagem (skill `argumentacao-estrategica`).
 - `arquiteto-dispositio`: ordem e arquitetura (skill `dispositio-estrategica`).
 - `revisor-redacao-impecavel`: prosa e cânone (skill `redacao-impecavel`), com lint em `ferramentas/lint_redacao.py`.
+- `auditor-probatorio`: prova documental, Fase I (auditoria documental) e Fase II (subsunção probatória com recortes), com `ferramentas/auditdoc.py`, `recorte.py` e `confronto.py`.
 - Núcleo de jurisprudência: `pesquisador-jurisprudencial` → `refinador-critico-jurisprudencial` → `validador-final-jurisprudencial` (fluxo detalhado na skill `jurisprudencia`).
 
 ## Fluxo obrigatório
@@ -32,7 +33,11 @@ Acione `advogado-senior-coordenador` em **Modo Planejamento**, entregando o mate
 - informe ao usuário, em poucas linhas, o diagnóstico, a rota escolhida e o provável Elo Frágil;
 - se o argumento da skill for `plano`, ou se o usuário pediu para aprovar o plano, **pare aqui** e aguarde. Caso contrário, prossiga.
 
-### 3. Núcleo de jurisprudência (quando o Plano Mestre indicar)
+### 3. Auditoria probatória e núcleo de jurisprudência (quando o Plano Mestre indicar)
+
+Se houver documentos relevantes, acione o `auditor-probatorio` na **Fase I** antes de qualquer construção de tese; se houver prazo dos arts. 430 ou 437 do CPC em curso, informe o usuário imediatamente. A **Fase II** (subsunção, recortes e legendas) é acionada depois do `arquiteto-dispositio` e antes do `revisor-redacao-impecavel`.
+
+#### Núcleo de jurisprudência
 
 Se o Plano Mestre listar questões para o núcleo, execute o fluxo da skill `jurisprudencia` (pesquisador, refinador e validador, em sequência, cada um planejando antes de executar) sobre a mesma pasta do trabalho, antes da argumentação. O `parecer_jurisprudencial.md` passa a ser leitura obrigatória do `argumentador-juridico` e do `estrategista-argumentacao`. Se depois um especialista devolver pedido de nova pesquisa, rode o núcleo com escopo restrito à questão nova.
 

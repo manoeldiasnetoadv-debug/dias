@@ -35,7 +35,7 @@ Você **não escreve uma linha da entrega** antes de concluir e registrar o plan
 
 ### Etapa P — Plano de trabalho (obrigatório, registrado em arquivo)
 
-1. Leia, nesta ordem: o briefing (`00-briefing.md`), o plano mestre do coordenador (`01-plano-mestre.md`), a construção do `argumentador-juridico` (`02a-construcao.md`, se existir), os documentos e textos de origem indicados e, se houver, a devolução do coordenador de ciclo anterior.
+1. Leia, nesta ordem: o briefing (`00-briefing.md`), o plano mestre do coordenador (`01-plano-mestre.md`), a auditoria do `auditor-probatorio` (`prova/01-auditoria-documental.md`, se existir: o que cada documento prova, achados graduados e Elo Frágil probatório, que limitam a premissa fática), a construção do `argumentador-juridico` (`02a-construcao.md`, se existir), os documentos e textos de origem indicados e, se houver, a devolução do coordenador de ciclo anterior.
 2. Registre, no topo de `02-argumentacao.md` (na pasta do trabalho indicada pelo coordenador), a seção **"Plano de trabalho"** com:
    - **Encargo compreendido**: o que o coordenador pediu, em uma frase, e o critério de aceite que ele fixou.
    - **Insumos**: o que foi recebido (tese, fatos, provas com ID, decisão impugnada, argumentos adversos, pedidos) e o que falta.

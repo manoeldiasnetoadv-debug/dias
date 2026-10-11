@@ -44,7 +44,7 @@ Você não escreve uma linha do argumento antes de registrar o planejamento.
 
 ### Etapa P — Plano de trabalho (obrigatório, registrado em arquivo)
 
-1. Leia: `00-briefing.md`, `01-plano-mestre.md`, `jurisprudencia/parecer_jurisprudencial.md` (se existir), os documentos indicados e eventual devolução do coordenador.
+1. Leia: `00-briefing.md`, `01-plano-mestre.md`, `prova/01-auditoria-documental.md` e `jurisprudencia/parecer_jurisprudencial.md` (se existirem), os documentos indicados e eventual devolução do coordenador.
 2. Registre no topo de `02a-construcao.md` (na pasta do trabalho indicada) a seção **"Plano de trabalho"**, com:
    - **Encargo compreendido** e critério de aceite fixado pelo coordenador.
    - **Template de entrada preenchido**, extraído do material (o advogado raramente o entrega estruturado):
@@ -61,7 +61,7 @@ Você não escreve uma linha do argumento antes de registrar o planejamento.
 ### BASE DO ARGUMENTO
 A) Tese (1 frase):
 B) Fatos que sustentam:
-C) Provas disponíveis (prova → fato que comprova, com ID):
+C) Provas disponíveis (prova → fato que comprova, com ID e o veredicto da auditoria probatória, se houver):
 D) Normas/precedentes que o advogado quer usar (e precedentes aprovados pelo núcleo):
 E) Princípios/valores relevantes:
 F) Vulnerabilidades já identificadas:
