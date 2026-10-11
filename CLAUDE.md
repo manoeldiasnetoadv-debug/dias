@@ -11,11 +11,20 @@ Este repositório abriga uma banca de agentes que aprimora textos jurídicos e f
 | `arquiteto-dispositio` | Ordem: abertura, hierarquia, prolepse, peroração, contradição interna, checklist de protocolo | skill `dispositio-estrategica` |
 | `revisor-redacao-impecavel` | Prosa: cânone do escritório, cortes, marcas de máquina, lint | skill `redacao-impecavel` |
 
-Ordem padrão: **substância → ordem → prosa → auditoria**. Competência em caso de conflito: substância prevalece sobre ordem; ordem prevalece sobre prosa; ética e veracidade prevalecem sobre tudo.
+**Núcleo de jurisprudência** (três etapas sequenciais; skill `jurisprudencia`):
+
+| Agente | Função |
+|---|---|
+| `pesquisador-jurisprudencial` | Localiza precedentes favoráveis, contrários e neutros em fontes oficiais, com inventário verificável |
+| `refinador-critico-jurisprudencial` | Testa ratio, aderência fática, distinções, superação e precedentes contrários; classifica FORTE, CONDICIONADO, CONTEXTUAL, CONTRÁRIO ou EXCLUIR |
+| `validador-final-jurisprudencial` | Decide APROVAR, APROVAR COM CONDIÇÃO ou REJEITAR; consolida o parecer jurisprudencial e o texto sugerido |
+
+Ordem padrão: **(jurisprudência, quando a tese depende de precedente) → substância → ordem → prosa → auditoria**. Só entra na peça precedente fornecido pelo advogado ou aprovado pelo validador; julgado rejeitado nunca entra. Competência em caso de conflito: substância prevalece sobre ordem; ordem prevalece sobre prosa; ética e veracidade prevalecem sobre tudo.
 
 ## Como usar
 
 - **`/banca`** seguido do texto ou do caminho do arquivo: a sessão principal conduz o ciclo completo (planejamento → especialistas → auditoria → entrega). `/banca plano` para parar após o Plano Mestre e aprovar antes da execução.
+- **`/jurisprudencia`** seguido da questão jurídica e dos documentos: roda só o núcleo de jurisprudência e entrega o parecer jurisprudencial.
 - **`claude --agent advogado-senior-coordenador`**: abre a sessão já com o coordenador como agente principal (Modo Regência), acionando os especialistas diretamente.
 - Cada especialista também pode ser chamado isoladamente ("use o arquiteto-dispositio para reordenar estes tópicos"); mesmo assim ele planeja antes de executar.
 
@@ -27,6 +36,9 @@ Ordem padrão: **substância → ordem → prosa → auditoria**. Competência e
 |---|---|
 | `00-briefing.md` | coordenador (material do advogado, sem edição) |
 | `01-plano-mestre.md` | coordenador (diagnóstico, rota, encargos, critérios de aceite, cronograma, arbitragens) |
+| `jurisprudencia/01_pesquisa_bruta.md` | pesquisador-jurisprudencial (plano de pesquisa + inventário) |
+| `jurisprudencia/02_refinamento_critico.md` | refinador-critico-jurisprudencial (plano + matriz de aderência) |
+| `jurisprudencia/03_validacao_final.md`, `jurisprudencia/parecer_jurisprudencial.md` | validador-final-jurisprudencial (decisões e parecer consolidado) |
 | `02-argumentacao.md` | estrategista-argumentacao (plano + Modos A/B/C/D) |
 | `03-dispositio.md`, `texto-dispositio.md` | arquiteto-dispositio (plano + arquitetura e texto reordenado) |
 | `04-redacao.md`, `texto-revisado.md` | revisor-redacao-impecavel (plano + registro de alterações + texto revisado) |

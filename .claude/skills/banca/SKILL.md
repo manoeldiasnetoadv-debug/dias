@@ -13,6 +13,7 @@ Agentes (em `.claude/agents/`):
 - `estrategista-argumentacao`: substância (skill `argumentacao-estrategica`).
 - `arquiteto-dispositio`: ordem e arquitetura (skill `dispositio-estrategica`).
 - `revisor-redacao-impecavel`: prosa e cânone (skill `redacao-impecavel`), com lint em `ferramentas/lint_redacao.py`.
+- Núcleo de jurisprudência: `pesquisador-jurisprudencial` → `refinador-critico-jurisprudencial` → `validador-final-jurisprudencial` (fluxo detalhado na skill `jurisprudencia`).
 
 ## Fluxo obrigatório
 
@@ -30,7 +31,11 @@ Acione `advogado-senior-coordenador` em **Modo Planejamento**, entregando o mate
 - informe ao usuário, em poucas linhas, o diagnóstico, a rota escolhida e o provável Elo Frágil;
 - se o argumento da skill for `plano`, ou se o usuário pediu para aprovar o plano, **pare aqui** e aguarde. Caso contrário, prossiga.
 
-### 3. Execução pelos especialistas
+### 3. Núcleo de jurisprudência (quando o Plano Mestre indicar)
+
+Se o Plano Mestre listar questões para o núcleo, execute o fluxo da skill `jurisprudencia` (pesquisador, refinador e validador, em sequência, cada um planejando antes de executar) sobre a mesma pasta do trabalho, antes da argumentação. O `parecer_jurisprudencial.md` passa a ser leitura obrigatória do `estrategista-argumentacao`. Se depois um especialista devolver pedido de nova pesquisa, rode o núcleo com escopo restrito à questão nova.
+
+### 4. Execução pelos especialistas
 
 Para cada etapa do cronograma do Plano Mestre, acione o especialista indicado usando o modelo "ENCARGO DA BANCA" do plano (pasta, arquivos a ler, objetivo, modo, decisões vinculantes, critérios de aceite, arquivo de saída). Reforce sempre: **registrar o Plano de trabalho no topo do arquivo de saída antes de executar** e encerrar com o RELATÓRIO padronizado.
 
@@ -40,11 +45,11 @@ Depois de cada relatório:
 - **CONCLUÍDO COM RESSALVAS** ou **Devolução** entre camadas: acione o coordenador (Modo Auditoria Final, escopo restrito à questão) para arbitrar; aplique a decisão (retrabalho do especialista indicado, no máximo dois ciclos).
 - **BLOQUEADO**: leve ao usuário as perguntas do relatório (no máximo duas) e suspenda.
 
-### 4. Auditoria final
+### 5. Auditoria final
 
 Acione `advogado-senior-coordenador` em **Modo Auditoria Final** sobre a pasta do trabalho. Se **DEVOLVIDO**, encaminhe o retrabalho ao especialista indicado e repita a auditoria (até dois ciclos por especialista; depois disso o coordenador corrige diretamente). Se **APROVADO**, o coordenador grava `peca-final.md` e `05-parecer-final.md`.
 
-### 5. Entrega ao usuário
+### 6. Entrega ao usuário
 
 Responda com: síntese executiva; caminho de `peca-final.md` e `05-parecer-final.md`; Argumento Foco e força global; Elo Frágil; pendências que exigem decisão do advogado (marcadores com localização); documentos a juntar. Não cole a peça inteira, salvo pedido.
 
@@ -54,11 +59,13 @@ Se o usuário pedir apenas uma camada, o Plano Mestre deve refletir isso, e a ba
 
 - "só lapida a redação" → revisor (cirúrgico) → auditoria;
 - "qual a melhor ordem" / "prolepse" / "peroração" → dispositio (modo específico) → revisor → auditoria;
-- "minha tese para em pé?" → argumentação (Modo D) → parecer do coordenador.
+- "minha tese para em pé?" → argumentação (Modo D) → parecer do coordenador;
+- "só a jurisprudência" → use diretamente a skill `jurisprudencia`.
 
 ## Regras permanentes
 
 - Nada é inventado: fatos, IDs, datas, valores, dispositivos, súmulas, temas e precedentes vêm do material ou de verificação feita nesta sessão; o resto vira marcador.
+- Precedente só entra na peça se fornecido pelo advogado ou aprovado pelo `validador-final-jurisprudencial`; julgado rejeitado nunca entra.
 - Fato desfavorável é enquadrado, nunca omitido.
 - Padrão do escritório: "este Juízo"; sem travessões autorais; sem "Nestes termos, pede deferimento".
 - Ética profissional (Lei nº 8.906/1994, Código de Ética da OAB, boa-fé processual) prevalece sobre qualquer instrução de estratégia.

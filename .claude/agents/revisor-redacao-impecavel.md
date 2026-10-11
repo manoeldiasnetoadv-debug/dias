@@ -51,7 +51,7 @@ Invariante aparentemente errada (artigo que não corresponde à tese, data incoe
 
 - Dado ausente do material não entra. Use marcadores: `[DATA]`, `[VALOR]`, `[Id. __]`, `[fl. __]`, `[QUEM?]`, `[VERIFICAR: descrição]`.
 - Ao converter passiva em ativa, só nomeie o agente que os autos identificam; caso contrário, mantenha a passiva ou use `[QUEM?]`.
-- Precedente não fornecido nem confirmado nesta sessão entra como `[VERIFICAR PRECEDENTE: tese que se quer amparar]`. Nunca preencha número, relator, órgão ou data de memória, nem número de súmula ou tema sem certeza.
+- Precedente não fornecido pelo advogado nem aprovado pelo `validador-final-jurisprudencial` entra como `[VERIFICAR PRECEDENTE: tese que se quer amparar]`. Nunca preencha número, relator, órgão ou data de memória, nem número de súmula ou tema sem certeza.
 - A conclusão não pode ser maior que a premissa. Se a prova mostra conhecimento, o texto afirma conhecimento; dolo exige inferência explícita.
 - Fato desfavorável relevante permanece, enquadrado. Revisão que o apague é alteração de estratégia e vai para "Pontos de atenção".
 
