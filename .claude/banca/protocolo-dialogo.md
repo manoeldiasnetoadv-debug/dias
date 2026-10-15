@@ -10,6 +10,7 @@ Todo agente da banca é acionado com um **nome fixo**, que é o seu endereço pa
 |---|---|---|
 | `coordenador` | advogado-senior-coordenador | Plano Mestre, arbitragem, auditoria final |
 | `auditor` | auditor-probatorio | O que cada documento prova; recortes e legendas |
+| `contratualista` | advogado-contratualista | Leitura, auditoria e redação de contratos; eficácia e risco de cláusulas |
 | `pesquisador` | pesquisador-jurisprudencial | Localizar precedentes |
 | `refinador` | refinador-critico-jurisprudencial | Crítica e classificação de precedentes |
 | `validador` | validador-final-jurisprudencial | Decisão final sobre precedentes utilizáveis |

@@ -12,6 +12,7 @@ Este repositório abriga uma banca de agentes que aprimora textos jurídicos e f
 | `arquiteto-dispositio` | Ordem: abertura, hierarquia, prolepse, peroração, contradição interna, checklist de protocolo | skill `dispositio-estrategica` |
 | `revisor-redacao-impecavel` | Prosa: cânone do escritório, cortes, marcas de máquina, lint | skill `redacao-impecavel` |
 | `auditor-probatorio` | Prova documental: auditoria (o que prova, forma, matéria, ônus, vícios I-1 a I-3, confronto com os fatos, impugnação) e subsunção (recorte com caixa vermelha, legenda, quadro de confronto, índice probatório) | skills `auditoria-documental` e `subsuncao-probatoria` |
+| `advogado-contratualista` | Contratos: auditoria e redação de contratos imobiliários e de honorários (7 Filtros do Auditor, protocolos de blindagem de oito instrumentos, quadro De/Para, stress-test de cenários, minuta completa) | método próprio; skill `biblioteca-clausulas-honorarios` nos contratos de honorários |
 
 **Núcleo de jurisprudência** (três etapas sequenciais; skill `jurisprudencia`):
 
@@ -29,11 +30,12 @@ Ordem padrão: **(auditoria probatória, quando há documentos) → (jurisprudê
 - **`/jurisprudencia`** seguido da questão jurídica e dos documentos: roda só o núcleo de jurisprudência e entrega o parecer jurisprudencial.
 - Instalação no computador local: ver `INSTALACAO.md`.
 - **`claude --agent advogado-senior-coordenador`**: abre a sessão já com o coordenador como agente principal (Modo Regência), acionando os especialistas diretamente.
+- **`claude --agent advogado-contratualista`**: abre a sessão com o especialista em contratos, para auditar (Protocolo 1) ou redigir (Protocolo 2) contratos imobiliários e de honorários.
 - Cada especialista também pode ser chamado isoladamente ("use o arquiteto-dispositio para reordenar estes tópicos"); mesmo assim ele planeja antes de executar.
 
 ## Diálogo entre os agentes
 
-Os agentes conversam entre si enquanto trabalham, pela ferramenta `SendMessage`, conforme `.claude/banca/protocolo-dialogo.md`. Cada um é acionado com um nome fixo (`coordenador`, `auditor`, `pesquisador`, `refinador`, `validador`, `argumentador`, `estrategista`, `arquiteto`, `revisor`; a sessão principal é `main`) e troca mensagens de cinco tipos: CONSULTA, ALERTA, CONTESTAÇÃO, RESPOSTA e ESCALADA. Agente que já concluiu é retomado quando recebe mensagem. Cada agente decide só sobre a sua camada e nunca edita o arquivo de outro; divergência não resolvida em duas trocas vai ao coordenador. Toda mensagem fica registrada em `canal-da-banca.md` na pasta do caso. Antes da auditoria final, o coordenador abre uma rodada de contraditório sobre o texto quase final.
+Os agentes conversam entre si enquanto trabalham, pela ferramenta `SendMessage`, conforme `.claude/banca/protocolo-dialogo.md`. Cada um é acionado com um nome fixo (`coordenador`, `auditor`, `contratualista`, `pesquisador`, `refinador`, `validador`, `argumentador`, `estrategista`, `arquiteto`, `revisor`; a sessão principal é `main`) e troca mensagens de cinco tipos: CONSULTA, ALERTA, CONTESTAÇÃO, RESPOSTA e ESCALADA. Agente que já concluiu é retomado quando recebe mensagem. Cada agente decide só sobre a sua camada e nunca edita o arquivo de outro; divergência não resolvida em duas trocas vai ao coordenador. Toda mensagem fica registrada em `canal-da-banca.md` na pasta do caso. Antes da auditoria final, o coordenador abre uma rodada de contraditório sobre o texto quase final.
 
 ## Pasta de cada trabalho
 
@@ -49,6 +51,7 @@ Os agentes conversam entre si enquanto trabalham, pela ferramenta `SendMessage`,
 | `jurisprudencia/03_validacao_final.md`, `jurisprudencia/parecer_jurisprudencial.md` | validador-final-jurisprudencial (decisões e parecer consolidado) |
 | `prova/01-auditoria-documental.md`, `prova/arquivos/` | auditor-probatorio, Fase I (plano + parecer de auditoria, cópias com SHA-256) |
 | `prova/02-subsuncao-probatoria.md`, `prova/figuras/` | auditor-probatorio, Fase II (blocos abertura, figura, legenda, fechamento) |
+| `contratos/01-auditoria-contratual.md`, `contratos/02-minuta.md`, `contratos/minuta-contrato.md` | advogado-contratualista (plano + parecer do Protocolo 1; plano, arquitetura e nota do auditor do Protocolo 2; minuta limpa) |
 | `02a-construcao.md` | argumentador-juridico (plano + seções I a IX) |
 | `02-argumentacao.md` | estrategista-argumentacao (plano + Modos A/B/C/D) |
 | `03-dispositio.md`, `texto-dispositio.md` | arquiteto-dispositio (plano + arquitetura e texto reordenado) |

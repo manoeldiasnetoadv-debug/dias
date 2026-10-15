@@ -49,10 +49,11 @@ claude
 
 Na primeira abertura, o Claude Code pergunta se você confia na pasta: confirme (sem isso, os agentes do projeto não carregam). Depois:
 
-- `/agents` mostra os nove agentes da banca;
+- `/agents` mostra os dez agentes da banca;
 - `/banca` seguido do texto ou do caminho do arquivo roda o ciclo completo; `/banca plano` para aprovar o Plano Mestre antes da execução;
 - `/jurisprudencia` seguido da questão jurídica roda só o núcleo de jurisprudência;
-- `claude --agent advogado-senior-coordenador` abre a sessão já com o coordenador no comando.
+- `claude --agent advogado-senior-coordenador` abre a sessão já com o coordenador no comando;
+- `claude --agent advogado-contratualista` abre a sessão com o especialista em contratos (auditoria e redação de contratos imobiliários e de honorários).
 
 Coloque os documentos do caso dentro da pasta `dias` (por exemplo, `dias/entrada/`) e indique o caminho ao Claude.
 

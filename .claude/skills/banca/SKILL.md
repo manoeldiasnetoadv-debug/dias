@@ -15,6 +15,7 @@ Agentes (em `.claude/agents/`):
 - `arquiteto-dispositio`: ordem e arquitetura (skill `dispositio-estrategica`).
 - `revisor-redacao-impecavel`: prosa e cânone (skill `redacao-impecavel`), com lint em `ferramentas/lint_redacao.py`.
 - `auditor-probatorio`: prova documental, Fase I (auditoria documental) e Fase II (subsunção probatória com recortes), com `ferramentas/auditdoc.py`, `recorte.py` e `confronto.py`.
+- `advogado-contratualista`: auditoria (Protocolo 1) e redação (Protocolo 2) de contratos imobiliários e de honorários; acionado quando o texto é um contrato ou quando a peça depende da leitura técnica de um contrato.
 - Núcleo de jurisprudência: `pesquisador-jurisprudencial` → `refinador-critico-jurisprudencial` → `validador-final-jurisprudencial` (fluxo detalhado na skill `jurisprudencia`).
 
 ## Nomes fixos (endereços para o diálogo)
@@ -25,6 +26,7 @@ Acione **sempre** cada agente pela ferramenta Agent com o parâmetro `name` abai
 |---|---|
 | advogado-senior-coordenador | `coordenador` |
 | auditor-probatorio | `auditor` |
+| advogado-contratualista | `contratualista` |
 | pesquisador-jurisprudencial | `pesquisador` |
 | refinador-critico-jurisprudencial | `refinador` |
 | validador-final-jurisprudencial | `validador` |
